@@ -7,6 +7,7 @@ import scala.util.parsing.combinator._
 
 object Main {
   def main(args: Array[String]): Unit = {
+    /* Testing FileTree:
     val ft = FileTree.loadFileTree(new io.File("/tmp"))
     val filesAndDirectories = ft.getFilesAndDirectories()
     println("Files:")
@@ -23,5 +24,11 @@ object Main {
     val newFt = FileTree.fileTreeFromStringParser.parseAll(FileTree.fileTreeFromStringParser.obj, ft.toString())
     println(newFt)
     println(newFt.get.getDuplicates())
+    */
+
+    val parsedLogicOperator = LogicalOperator.LogicParser.parseAll(LogicalOperator.LogicParser.obj, "And(And(true, false), Or(false, true), Xor(false,true))")
+    println(parsedLogicOperator)
+    println(parsedLogicOperator.getOrElse(False).evalWithActors())
+
   }
 }
