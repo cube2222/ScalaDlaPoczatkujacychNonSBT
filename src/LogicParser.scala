@@ -77,17 +77,17 @@ object LogicalOperator {
   object LogicParser extends RegexParsers {
     def obj: Parser[LogicalOperator] = and | or | xor | tru | fal
 
-    def and: Parser[And] = "And" ~ "(" ~ pair ~ ")" ^^ ((x) => And(x._1._2))
+    def and: Parser[And] = "And" ~ "(" ~ ls ~ ")" ^^ ((x) => And(x._1._2))
 
-    def or: Parser[Or] = "Or" ~ "(" ~ pair ~ ")" ^^ ((x) => Or(x._1._2))
+    def or: Parser[Or] = "Or" ~ "(" ~ ls ~ ")" ^^ ((x) => Or(x._1._2))
 
-    def xor: Parser[Xor] = "Xor" ~ "(" ~ pair ~ ")" ^^ ((x) => Xor(x._1._2))
+    def xor: Parser[Xor] = "Xor" ~ "(" ~ ls ~ ")" ^^ ((x) => Xor(x._1._2))
 
     def tru: Parser[True.type] = "true" ^^ (_ => True)
 
     def fal: Parser[False.type] = "false" ^^ (_ => False)
 
-    def pair: Parser[List[LogicalOperator]] = repsep(obj, ",")
+    def ls: Parser[List[LogicalOperator]] = repsep(obj, ",")
   }
 
 }

@@ -5,8 +5,7 @@ import java.io
 import java.io._
 import scala.util.parsing.combinator.RegexParsers
 
-@SerialVersionUID(100L)
-sealed trait FileTree extends Serializable {
+sealed trait FileTree{
   val value: io.File
   def getSizeInBytes(): Long = {
     def go(ft: FileTree, sizeSum: Long): Long = ft match {

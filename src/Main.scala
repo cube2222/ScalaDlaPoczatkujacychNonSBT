@@ -26,7 +26,7 @@ object Main {
     println(newFt.get.getDuplicates())
     */
 
-    val parsedLogicOperator = LogicalOperator.LogicParser.parseAll(LogicalOperator.LogicParser.obj, "And(And(true, false), Or(false, true), Xor(false,true))")
+    val parsedLogicOperator = LogicalOperator.LogicParser.parseAll(LogicalOperator.LogicParser.obj, "And(And(true, true), Or(false, true), Xor(false,true))")
     println(parsedLogicOperator)
     println(parsedLogicOperator.getOrElse(False).evalWithActors())
 
